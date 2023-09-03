@@ -1,0 +1,463 @@
+{
+    "buckets": [
+        {
+            "Name": "extras",
+            "Source": "https://github.com/ScoopInstaller/Extras",
+            "Updated": {
+                "value": "\/Date(1689755187000)\/",
+                "DisplayHint": 2,
+                "DateTime": "2023年7月19日 16:26:27"
+            },
+            "Manifests": 1884
+        },
+        {
+            "Name": "games",
+            "Source": "https://github.com/Calinou/scoop-games",
+            "Updated": {
+                "value": "\/Date(1689755173000)\/",
+                "DisplayHint": 2,
+                "DateTime": "2023年7月19日 16:26:13"
+            },
+            "Manifests": 291
+        },
+        {
+            "Name": "java",
+            "Source": "https://github.com/ScoopInstaller/Java",
+            "Updated": {
+                "value": "\/Date(1689734279000)\/",
+                "DisplayHint": 2,
+                "DateTime": "2023年7月19日 10:37:59"
+            },
+            "Manifests": 253
+        },
+        {
+            "Name": "main",
+            "Source": "https://github.com/ScoopInstaller/Main.git",
+            "Updated": {
+                "value": "\/Date(1689755279000)\/",
+                "DisplayHint": 2,
+                "DateTime": "2023年7月19日 16:27:59"
+            },
+            "Manifests": 1208
+        },
+        {
+            "Name": "nerd-fonts",
+            "Source": "https://github.com/matthewjberger/scoop-nerd-fonts",
+            "Updated": {
+                "value": "\/Date(1689302876000)\/",
+                "DisplayHint": 2,
+                "DateTime": "2023年7月14日 10:47:56"
+            },
+            "Manifests": 279
+        },
+        {
+            "Name": "nirsoft",
+            "Source": "https://github.com/kodybrown/scoop-nirsoft",
+            "Updated": {
+                "value": "\/Date(1689722279000)\/",
+                "DisplayHint": 2,
+                "DateTime": "2023年7月19日 7:17:59"
+            },
+            "Manifests": 275
+        },
+        {
+            "Name": "nonportable",
+            "Source": "https://github.com/ScoopInstaller/Nonportable",
+            "Updated": {
+                "value": "\/Date(1689755562000)\/",
+                "DisplayHint": 2,
+                "DateTime": "2023年7月19日 16:32:42"
+            },
+            "Manifests": 127
+        },
+        {
+            "Name": "php",
+            "Source": "https://github.com/ScoopInstaller/PHP",
+            "Updated": {
+                "value": "\/Date(1688562314000)\/",
+                "DisplayHint": 2,
+                "DateTime": "2023年7月5日 21:05:14"
+            },
+            "Manifests": 387
+        },
+        {
+            "Name": "sysinternals",
+            "Source": "https://github.com/niheaven/scoop-sysinternals",
+            "Updated": {
+                "value": "\/Date(1688055327000)\/",
+                "DisplayHint": 2,
+                "DateTime": "2023年6月30日 0:15:27"
+            },
+            "Manifests": 75
+        },
+        {
+            "Name": "versions",
+            "Source": "https://github.com/ScoopInstaller/Versions",
+            "Updated": {
+                "value": "\/Date(1689755494000)\/",
+                "DisplayHint": 2,
+                "DateTime": "2023年7月19日 16:31:34"
+            },
+            "Manifests": 425
+        }
+    ],
+    "apps": [
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "7zip",
+            "Version": "23.01",
+            "Updated": "\/Date(1688007632225)\/"
+        },
+        {
+            "Info": "",
+            "Source": "G:\\AllInOne\\Codes\\AutoManage\\automanage\\result\\adrive.json",
+            "Name": "adrive",
+            "Version": "4.6.1",
+            "Updated": "\/Date(1689693095022)\/"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "aria2",
+            "Version": "1.36.0-1",
+            "Updated": "\/Date(1688004733246)\/"
+        },
+        {
+            "Info": "",
+            "Source": "G:\\AllInOne\\Codes\\AutoManage\\automanage\\result\\baidunetdisk.json",
+            "Name": "baidunetdisk",
+            "Version": "7.30.5.2",
+            "Updated": "\/Date(1689451025370)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "clash.mini",
+            "Version": "0.2.2",
+            "Updated": "\/Date(1689362966662)\/"
+        },
+        {
+            "Info": "",
+            "Source": "G:\\AllInOne\\Codes\\AutoManage\\automanage\\result\\coodesker.json",
+            "Name": "coodesker",
+            "Version": "1.0.4.1",
+            "Updated": "\/Date(1689503208297)\/"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "dark",
+            "Version": "3.11.2",
+            "Updated": "\/Date(1688993919533)\/"
+        },
+        {
+            "Info": "",
+            "Source": "G:\\AllInOne\\Codes\\AutoManage\\automanage\\result\\dingtalk.json",
+            "Name": "dingtalk",
+            "Version": "7.0.40.7049102",
+            "Updated": "\/Date(1689357729257)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "diskgenius",
+            "Version": "5.5.0.1488",
+            "Updated": "\/Date(1688920229695)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "dismplusplus",
+            "Version": "10.1.1002.1B",
+            "Updated": "\/Date(1689363876193)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "everything",
+            "Version": "1.4.1.1024",
+            "Updated": "\/Date(1688707307255)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "firefox",
+            "Version": "115.0.2",
+            "Updated": "\/Date(1689315656457)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "foxit-reader",
+            "Version": "12.1.2.15332",
+            "Updated": "\/Date(1688923121027)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "geekuninstaller",
+            "Version": "1.5.1.162",
+            "Updated": "\/Date(1688912293290)\/"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "git",
+            "Version": "2.41.0.3",
+            "Updated": "\/Date(1689692654888)\/"
+        },
+        {
+            "Info": "",
+            "Source": "versions",
+            "Name": "googlechrome-dev",
+            "Version": "116.0.5845.32",
+            "Updated": "\/Date(1689334649388)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "gridea",
+            "Version": "0.9.3",
+            "Updated": "\/Date(1689632580370)\/"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "innounp",
+            "Version": "0.50",
+            "Updated": "\/Date(1688913874381)\/"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "maven",
+            "Version": "3.9.3",
+            "Updated": "\/Date(1688924330864)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "mobaxterm",
+            "Version": "23.2",
+            "Updated": "\/Date(1689608821492)\/"
+        },
+        {
+            "Info": "",
+            "Source": "G:\\AllInOne\\Codes\\AutoManage\\automanage\\result\\neteasemusic.json",
+            "Name": "neteasemusic",
+            "Version": "2.10.8.200945",
+            "Updated": "\/Date(1689416850175)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "notion",
+            "Version": "2.0.49",
+            "Updated": "\/Date(1689749137112)\/"
+        },
+        {
+            "Info": "",
+            "Source": "G:\\AllInOne\\Codes\\AutoManage\\automanage\\result\\npcap.json",
+            "Name": "npcap",
+            "Version": "1.75",
+            "Updated": "\/Date(1689665931052)\/"
+        },
+        {
+            "Info": "",
+            "Source": "java",
+            "Name": "openjdk11",
+            "Version": "11.0.2-9",
+            "Updated": "\/Date(1689680680281)\/"
+        },
+        {
+            "Info": "",
+            "Source": "java",
+            "Name": "openjdk8-redhat-jre",
+            "Version": "8u342-b07",
+            "Updated": "\/Date(1689691789304)\/"
+        },
+        {
+            "Info": "",
+            "Source": "java",
+            "Name": "oraclejdk",
+            "Version": "20",
+            "Updated": "\/Date(1689683519959)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "pdf-xchange-editor",
+            "Version": "10.0.0.370",
+            "Updated": "\/Date(1688916331580)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "potplayer",
+            "Version": "230705",
+            "Updated": "\/Date(1688704049279)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "putty",
+            "Version": "0.78",
+            "Updated": "\/Date(1689608531368)\/"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "redis",
+            "Version": "7.0.12",
+            "Updated": "\/Date(1689316241700)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "rufus",
+            "Version": "4.1",
+            "Updated": "\/Date(1689141017995)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "scoop-completion",
+            "Version": "0.2.4",
+            "Updated": "\/Date(1689044730633)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "sublime-text",
+            "Version": "4-4143",
+            "Updated": "\/Date(1688710307671)\/"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "sudo",
+            "Version": "0.2020.01.26",
+            "Updated": "\/Date(1688993960678)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "terminals",
+            "Version": "4.0.1",
+            "Updated": "\/Date(1689615319448)\/"
+        },
+        {
+            "Info": "",
+            "Source": "G:\\AllInOne\\Codes\\AutoManage\\automanage\\result\\thunder11.json",
+            "Name": "thunder11",
+            "Version": "11.1.12.1692",
+            "Updated": "\/Date(1689419037257)\/"
+        },
+        {
+            "Info": "",
+            "Source": "G:\\AllInOne\\Codes\\AutoManage\\automanage\\result\\tim.json",
+            "Name": "tim",
+            "Version": "3.4.7.22085",
+            "Updated": "\/Date(1689532369672)\/"
+        },
+        {
+            "Info": "",
+            "Source": "G:\\AllInOne\\Codes\\AutoManage\\automanage\\result\\todesk.json",
+            "Name": "todesk",
+            "Version": "4.7.0.2",
+            "Updated": "\/Date(1689528707033)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "trafficmonitor",
+            "Version": "1.84.1",
+            "Updated": "\/Date(1688921639334)\/"
+        },
+        {
+            "Info": "",
+            "Source": "versions",
+            "Name": "v2rayn-pre",
+            "Version": "6.27",
+            "Updated": "\/Date(1688921682078)\/"
+        },
+        {
+            "Info": "",
+            "Source": "nonportable",
+            "Name": "virtualbox-np",
+            "Version": "7.0.10",
+            "Updated": "\/Date(1689749333128)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "vncviewer",
+            "Version": "7.5.1",
+            "Updated": "\/Date(1688916486573)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "vscode",
+            "Version": "1.80.1",
+            "Updated": "\/Date(1689577565781)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "wechat",
+            "Version": "3.9.5.81",
+            "Updated": "\/Date(1689141371103)\/"
+        },
+        {
+            "Info": "",
+            "Source": "G:\\AllInOne\\Codes\\AutoManage\\automanage\\result\\wemeet.json",
+            "Name": "wemeet",
+            "Version": "3.18.3.433",
+            "Updated": "\/Date(1689535488630)\/"
+        },
+        {
+            "Info": "",
+            "Source": "versions",
+            "Name": "winget-preview",
+            "Version": "1.6.1573",
+            "Updated": "\/Date(1688126702943)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "winrar",
+            "Version": "6.22",
+            "Updated": "\/Date(1689772385791)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "wireshark",
+            "Version": "4.0.7",
+            "Updated": "\/Date(1689316279720)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "wpsoffice",
+            "Version": "11.2.0.11537",
+            "Updated": "\/Date(1688436842268)\/"
+        },
+        {
+            "Info": "",
+            "Source": "extras",
+            "Name": "xmind",
+            "Version": "23.05.1740",
+            "Updated": "\/Date(1688923605607)\/"
+        },
+        {
+            "Info": "",
+            "Source": "main",
+            "Name": "xray",
+            "Version": "1.7.5",
+            "Updated": "\/Date(1688921516743)\/"
+        }
+    ]
+}

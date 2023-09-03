@@ -1,0 +1,28 @@
+{
+    "appName": "SunloginClient",
+    "version": "13.3.1.56398",
+    "description": "Remote control software (Chinese: 向日葵远程控制/向日葵遠程控制)",
+    "homepage": "https://sunlogin.oray.com/",
+    "architecture": {
+        "64bit": {
+            "url": "https://down.oray.com/sunlogin/windows/SunloginClient_13.3.1.56398_x64.exe#/setup.exe",
+            "hash": "9f61e23ba8ab90cb6ee2190213cbeb556eb060d8d429f1112b0bb671bd82d243"
+        }
+    },
+    "pre_install": "Invoke-ExternalCommand \"$dir\\setup.exe\" -RunAs -ContinueExitcodes @{1 = 'Click on the dialog box to proceed'} | Out-Null",
+    "uninstaller": {
+        "script": "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList '--mod=uninstall' -RunAs -ContinueExitcodes @{1 = 'Click on the dialog box to proceed'} | Out-Null"
+    },
+    "checkver": {
+        "url": "https://www.weidown.com/xiazai/3843.html",
+        "regex": "SunloginClient_([\\d.]+)\\.7z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://down.oray.com/sunlogin/windows/SunloginClient_$version_x64.exe#/setup.exe"
+            }
+        }
+    },
+    "notes": "不可用，This package is not in official buckets because English interface is not available"
+}

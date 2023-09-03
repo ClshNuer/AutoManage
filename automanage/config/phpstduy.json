@@ -1,0 +1,48 @@
+{
+    "appName": "phpstudy_pro",
+    "version": "8.1.1.2",
+    "description": "支持一键LAMP,LNMP,集群,监控,网站,FTP,数据库,JAVA等100多项服务器管理功能。",
+    "homepage": "https://www.xp.cn/wenda/401.html",
+    "license": "Unknown",
+    "architecture": {
+        "64bit": {
+            "url": "http://public.xp.cn/upgrades/phpStudy_64.zip",
+            "hash": "md5:83975d2d55fb172afa131f5221e8ca48",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
+            ]
+        }
+    },
+    "extract_dir": "phpStudy_64",
+    "installer": {
+        "script": [
+        ]
+    },
+    "shortcuts": [
+        [
+            "COM/phpstudy_pro.exe",
+            "phpstudy_pro"
+        ]
+    ],
+    "persist": [
+        "users",
+        "configure",
+        "appdata"
+    ],
+    "checkver": {
+        "url": "https://www.xp.cn/wenda/401.html",
+        "regex": "V([\\d.]+) 版本更新日志"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://public.xp.cn/upgrades/phpStudy_64.zip",
+                "hash": {
+                    "regex": "md5:([0-9a-fA-F]{32})"
+                }
+            }
+        }
+    },
+    "notes": "暂不可用，phpstudy集成环境 zip 文件"
+}

@@ -1,0 +1,150 @@
+{
+    "appName": "gifski",
+    "version": "1.11.0",
+    "description": "GIF encoder based on libimagequant (pngquant).",
+    "homepage": "https://gif.ski/",
+    "license": {
+        "identifier": "AGPL-3.0-or-later",
+        "url": ""
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gif.ski/gifski-1.11.0.zip",
+            "refurls": "",
+            "depends": "sudo",
+            "bin": [
+                "gifski.exe"
+            ],
+            "hash": "e01c51bed4fd470c544c9d8d0f881fee3371a36de3e68a0c6a4ec7ff5c59fcdf",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
+            ]
+        },
+        "32bit": {
+        }
+    },
+    "extract_dir": "",
+    "installer": {
+        "script": [
+            "$appName = \"gifski\"",
+
+            "function appInstaller {",
+            "    param(",
+            "        [string]$runtime,",
+            "        [string]$persist",
+            "    )",
+
+            "    if (Test-Path $runtime) {",
+            "        Remove-Item $runtime -Force -Recurse -ErrorAction SilentlyContinue",
+            "    }",
+            "    if (!(Test-Path $persist)) {",
+            "        New-Item $persist -Type Directory -Force | Out-Null",
+            "    }",
+            "    New-Item -Type Junction -Path $runtime -Target $persist | Out-Null",
+            "}",
+
+            "# # handle runtime configure",
+            "# appInstaller $runtimeConfig $runtimeConfigPersist",
+            "# appInstaller \"$env:USERPROFILE\\.config\\$appName\" \"$persist_dir\\configure\"",
+
+            "# # handle runtime Roaming",
+            "# appInstaller $runtimeRoaming $runtimeRoamingPersist",
+            "appInstaller \"$env:APPDATA\\$appName\" \"$persist_dir\\appdata\"",
+
+            "# # remove runtime dir",
+            "# Remove-Item $runtime -Force -Recurse -ErrorAction SilentlyContinue"
+        ]
+    },
+    "post_install": [
+        "function removeDir {",
+        "    param(",
+        "        [string]$fullDir",
+        "    )",
+        "    if (Test-Path fullDir) {",
+        "        Remove-Item -Force -Recurse fullDir",
+        "    }",
+        "}",
+
+        "# # remove useless files",
+        "removeDir \"$dir\\`$PLUGINSDIR\"",
+        "removeDir \"$dir\\`$TEMP\"",
+
+        ""
+    ],
+    "pre_uninstall": [
+        "# stop process",
+        "$process_name = \"gifski\"",
+        "Get-Process | Where-Object {$_.ProcessName -eq $process_name} | Stop-Process -Force -ErrorAction SilentlyContinue"
+    ],
+    "uninstaller": {
+        "script": [
+            "$appName = \"gifski\"",
+
+            "function appUninstaller {",
+            "    param(",
+            "        [string]$runtime,",
+            "        [string]$persist",
+            "    )",
+
+            "    if (Test-Path $runtime) {",
+            "        Remove-Item $runtime -Force -Recurse -ErrorAction SilentlyContinue",
+            "    }",
+            "}",
+
+            "# # handle runtime configure",
+            "# appUninstaller $runtimeConfig $runtimeConfigPersist",
+            "appUninstaller \"$env:USERPROFILE\\.config\\$appName\" \"$persist_dir\\configure\"",
+
+            "# # handle runtime Roaming",
+            "# appUninstaller $runtimeRoaming $runtimeRoamingPersist",
+            "# appUninstaller \"$env:APPDATA\\$appName\" \"$persist_dir\\appdata\"",
+
+            "# # handle runtime Local",
+            "# appUninstaller $runtimeLocal \"$persist_dir\\appdata\"",
+            "appUninstaller \"$env:LOCALAPPDATA\\$appName-desktop-updater\" \"$persist_dir\\appdata\"",
+
+            "# # remove persist dir",
+            "# Remove-Item $persist_dir -Force -Recurse -ErrorAction SilentlyContinue"
+        ]
+    },
+    "post_uninstall": {
+    },
+    "bin": [
+        [
+            "gifski.exe",
+            "gifski"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "gifski.exe",
+            "gifski"
+        ]
+    ],
+    "persist": [
+        "users",
+        "configure",
+        "appdata"
+    ],
+    "checkver": {
+        "url": "gifski-([\\d.]+)\\.zip",
+        "regex": "-([\\d.]+)\\"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gif.ski/gifski-$version.zip",
+                "hash": {
+                    "url": "",
+                    "mode": "extract",
+                    "regex": "sha512.*?$base64",
+                    "jsonpath": ""
+                }
+            },
+            "32bit": {
+            }
+        }
+    },
+    "notes": "something need to know"
+}

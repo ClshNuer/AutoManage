@@ -1,0 +1,16 @@
+{
+    "appName": "huorong",
+    "homepage": "https://www.huorong.cn/",
+    "version": "5.0.36.11",
+    "description": "火绒安全软件安装程序",
+    "url": "https://down5.huorong.cn/sysdiag-full-5.0.36.11.exe",
+    "reurl": "https://down7.huorong.cn/sysdiag-full-5.0.73.7-2023.07.16.1.exe",
+    "hash": "db688c7627d3de36bf8dc2b04bf238c22a650387b85a0c590d360db2435cb4f0",
+    "installer": {
+        "file": "sysdiag-full-5.0.36.11.exe"
+    },
+    "uninstaller": {
+        "file": "uninst.exe"
+    },
+    "notes": "暂不可用"
+}

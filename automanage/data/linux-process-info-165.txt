@@ -1,0 +1,221 @@
+UID         PID   PPID  C STIME TTY          TIME CMD
+root          1      0  0  2022 ?        00:13:47 /usr/lib/systemd/systemd --system --deserialize 20
+root          2      0  0  2022 ?        00:00:09 [kthreadd]
+root          3      2  0  2022 ?        00:01:58 [ksoftirqd/0]
+root          5      2  0  2022 ?        00:00:00 [kworker/0:0H]
+root          7      2  0  2022 ?        00:00:35 [migration/0]
+root          8      2  0  2022 ?        00:00:00 [rcu_bh]
+root          9      2  0  2022 ?        16:08:35 [rcu_sched]
+root         10      2  0  2022 ?        00:01:46 [watchdog/0]
+root         11      2  0  2022 ?        00:01:23 [watchdog/1]
+root         12      2  0  2022 ?        00:00:33 [migration/1]
+root         13      2  0  2022 ?        00:00:33 [ksoftirqd/1]
+root         15      2  0  2022 ?        00:00:00 [kworker/1:0H]
+root         16      2  0  2022 ?        00:01:20 [watchdog/2]
+root         17      2  0  2022 ?        00:00:42 [migration/2]
+root         18      2  0  2022 ?        00:00:15 [ksoftirqd/2]
+root         20      2  0  2022 ?        00:00:00 [kworker/2:0H]
+root         21      2  0  2022 ?        00:01:23 [watchdog/3]
+root         22      2  0  2022 ?        00:00:33 [migration/3]
+root         23      2  0  2022 ?        00:00:10 [ksoftirqd/3]
+root         25      2  0  2022 ?        00:00:00 [kworker/3:0H]
+root         26      2  0  2022 ?        00:01:22 [watchdog/4]
+root         27      2  0  2022 ?        00:00:22 [migration/4]
+root         28      2  0  2022 ?        00:00:08 [ksoftirqd/4]
+root         30      2  0  2022 ?        00:00:00 [kworker/4:0H]
+root         31      2  0  2022 ?        00:01:22 [watchdog/5]
+root         32      2  0  2022 ?        00:00:23 [migration/5]
+root         33      2  0  2022 ?        00:00:08 [ksoftirqd/5]
+root         35      2  0  2022 ?        00:00:00 [kworker/5:0H]
+root         36      2  0  2022 ?        00:01:21 [watchdog/6]
+root         37      2  0  2022 ?        00:00:21 [migration/6]
+root         38      2  0  2022 ?        00:00:07 [ksoftirqd/6]
+root         40      2  0  2022 ?        00:00:00 [kworker/6:0H]
+root         41      2  0  2022 ?        00:01:25 [watchdog/7]
+root         42      2  0  2022 ?        00:00:19 [migration/7]
+root         43      2  0  2022 ?        00:00:06 [ksoftirqd/7]
+root         45      2  0  2022 ?        00:00:00 [kworker/7:0H]
+root         46      2  0  2022 ?        00:01:24 [watchdog/8]
+root         47      2  0  2022 ?        00:00:17 [migration/8]
+root         48      2  0  2022 ?        00:00:05 [ksoftirqd/8]
+root         50      2  0  2022 ?        00:00:00 [kworker/8:0H]
+root         51      2  0  2022 ?        00:01:24 [watchdog/9]
+root         52      2  0  2022 ?        00:00:16 [migration/9]
+root         53      2  0  2022 ?        00:00:05 [ksoftirqd/9]
+root         55      2  0  2022 ?        00:00:00 [kworker/9:0H]
+root         56      2  0  2022 ?        00:01:24 [watchdog/10]
+root         57      2  0  2022 ?        00:00:15 [migration/10]
+root         58      2  0  2022 ?        00:00:05 [ksoftirqd/10]
+root         60      2  0  2022 ?        00:00:00 [kworker/10:0H]
+root         61      2  0  2022 ?        00:01:25 [watchdog/11]
+root         62      2  0  2022 ?        00:00:15 [migration/11]
+root         63      2  0  2022 ?        00:00:04 [ksoftirqd/11]
+root         65      2  0  2022 ?        00:00:00 [kworker/11:0H]
+root         66      2  0  2022 ?        00:01:24 [watchdog/12]
+root         67      2  0  2022 ?        00:00:14 [migration/12]
+root         68      2  0  2022 ?        00:00:04 [ksoftirqd/12]
+root         70      2  0  2022 ?        00:00:00 [kworker/12:0H]
+root         71      2  0  2022 ?        00:01:24 [watchdog/13]
+root         72      2  0  2022 ?        00:00:13 [migration/13]
+root         73      2  0  2022 ?        00:00:04 [ksoftirqd/13]
+root         75      2  0  2022 ?        00:00:00 [kworker/13:0H]
+root         76      2  0  2022 ?        00:01:23 [watchdog/14]
+root         77      2  0  2022 ?        00:00:13 [migration/14]
+root         78      2  0  2022 ?        00:00:04 [ksoftirqd/14]
+root         80      2  0  2022 ?        00:00:00 [kworker/14:0H]
+root         81      2  0  2022 ?        00:01:21 [watchdog/15]
+root         82      2  0  2022 ?        00:00:44 [migration/15]
+root         83      2  0  2022 ?        00:12:05 [ksoftirqd/15]
+root         85      2  0  2022 ?        00:00:00 [kworker/15:0H]
+root         87      2  0  2022 ?        00:00:00 [kdevtmpfs]
+root         88      2  0  2022 ?        00:00:00 [netns]
+root         89      2  0  2022 ?        00:00:25 [khungtaskd]
+root         90      2  0  2022 ?        00:00:00 [writeback]
+root         91      2  0  2022 ?        00:00:00 [kintegrityd]
+root         92      2  0  2022 ?        00:00:00 [bioset]
+root         93      2  0  2022 ?        00:00:00 [kblockd]
+root         94      2  0  2022 ?        00:00:00 [md]
+root        100      2  0  2022 ?        00:12:16 [kswapd0]
+root        101      2  0  2022 ?        00:00:00 [ksmd]
+root        102      2  0  2022 ?        00:01:40 [khugepaged]
+root        103      2  0  2022 ?        00:00:00 [crypto]
+root        111      2  0  2022 ?        00:00:00 [kthrotld]
+root        113      2  0  2022 ?        00:00:00 [kmpath_rdacd]
+root        115      2  0  2022 ?        00:00:00 [kpsmoused]
+root        116      2  0  2022 ?        00:00:00 [ipv6_addrconf]
+root        135      2  0  2022 ?        00:00:00 [deferwq]
+root        171      2  0  2022 ?        00:00:08 [kauditd]
+root        366      2  0  2022 ?        00:00:00 [ata_sff]
+root        390      2  0  2022 ?        00:00:00 [ttm_swap]
+root        398      2  0  2022 ?        00:00:00 [scsi_eh_0]
+root        399      2  0  2022 ?        00:00:00 [scsi_tmf_0]
+root        400      2  0  2022 ?        00:00:00 [scsi_eh_1]
+root        401      2  0  2022 ?        00:00:00 [scsi_tmf_1]
+root        478      2  0  2022 ?        00:00:56 [kworker/0:1H]
+root        539      2  0  2022 ?        00:00:00 [kdmflush]
+root        540      2  0  2022 ?        00:00:00 [bioset]
+root        551      2  0  2022 ?        00:00:00 [kdmflush]
+root        552      2  0  2022 ?        00:00:00 [bioset]
+root        565      2  0  2022 ?        00:00:00 [bioset]
+root        566      2  0  2022 ?        00:00:00 [xfsalloc]
+root        567      2  0  2022 ?        00:00:00 [xfs_mru_cache]
+root        568      2  0  2022 ?        00:00:00 [xfs-buf/dm-0]
+root        569      2  0  2022 ?        00:00:00 [xfs-data/dm-0]
+root        570      2  0  2022 ?        00:00:00 [xfs-conv/dm-0]
+root        571      2  0  2022 ?        00:00:00 [xfs-cil/dm-0]
+root        572      2  0  2022 ?        00:00:00 [xfs-reclaim/dm-]
+root        573      2  0  2022 ?        00:00:00 [xfs-log/dm-0]
+root        574      2  0  2022 ?        00:00:00 [xfs-eofblocks/d]
+root        575      2  0  2022 ?        02:13:04 [xfsaild/dm-0]
+root        576      2  0  2022 ?        00:00:08 [kworker/7:1H]
+root        577      2  0  2022 ?        00:01:41 [kworker/1:1H]
+root        633      2  0  2022 ?        00:00:09 [kworker/4:1H]
+root        647      1  0  2022 ?        00:05:49 /usr/lib/systemd/systemd-journald
+root        668      1  0  2022 ?        00:00:00 /usr/sbin/lvmetad -f
+root        677      1  0  2022 ?        00:00:00 /usr/lib/systemd/systemd-udevd
+root        884      2  0  2022 ?        00:00:08 [kworker/10:1H]
+root        918      2  0  2022 ?        00:00:00 [edac-poller]
+root        927      2  0  2022 ?        00:00:00 [xfs-buf/vda1]
+root        928      2  0  2022 ?        00:00:00 [xfs-data/vda1]
+root        929      2  0  2022 ?        00:00:00 [xfs-conv/vda1]
+root        930      2  0  2022 ?        00:00:00 [xfs-cil/vda1]
+root        931      2  0  2022 ?        00:00:00 [xfs-reclaim/vda]
+root        932      2  0  2022 ?        00:00:00 [xfs-log/vda1]
+root        933      2  0  2022 ?        00:00:00 [xfs-eofblocks/v]
+root        934      2  0  2022 ?        00:00:00 [xfsaild/vda1]
+root        961      1  0  2022 ?        00:00:35 /sbin/auditd
+dbus        988      1  0  2022 ?        00:04:46 /bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+polkitd     989      1  0  2022 ?        00:01:20 /usr/lib/polkit-1/polkitd --no-debug
+root        990      1  0  2022 ?        00:20:05 /usr/sbin/rsyslogd -n
+root        994      1  0  2022 ?        00:40:22 /usr/sbin/irqbalance --foreground
+root        996      1  0  2022 ?        00:02:39 /usr/lib/systemd/systemd-logind
+root        997      1  0  2022 ?        00:00:00 /usr/sbin/abrtd -d -s
+root        999      1  0  2022 ?        00:00:57 /usr/bin/abrt-watch-log -F BUG: WARNING: at WARNING: CPU: INFO: possible recursive locking detected ernel BUG at list_del corruption list_add corruption do_IRQ: stack overflow: ear stack overflow (cur: eneral protection fault nable to handle kernel ouble fault: RTNL: assertion failed eek! page_mapcount(page) went negative! adness at NETDEV WATCHDOG ysctl table check failed : nobody cared IRQ handler type mismatch Machine Check Exception: Machine check events logged divide error: bounds: coprocessor segment overrun: invalid TSS: segment not present: invalid opcode: alignment check: stack segment: fpu exception: simd exception: iret exception: /var/log/messages -- /usr/bin/abrt-dump-oops -xtD
+root       1022      1  0  2022 tty1     00:00:00 /sbin/agetty --noclear tty1 linux
+chrony     1045      1  0  2022 ?        00:02:21 /usr/sbin/chronyd
+root       1180      2  0  2022 ?        00:00:09 [kworker/5:1H]
+root       1181      2  0  2022 ?        00:00:08 [kworker/8:1H]
+root       1182      2  0  2022 ?        00:00:08 [kworker/6:1H]
+root       1254      1  0  2022 ?        00:56:11 /usr/bin/python -Es /usr/sbin/tuned -l -P
+nobody     1260      1  0  2022 ?        1-23:57:50 /usr/local/bin/node_exporter
+zabbix     1334      1  0  2022 ?        00:00:00 /usr/sbin/zabbix_agentd -c /etc/zabbix/zabbix_agentd.conf
+root       1374      1  0  2022 ?        00:00:00 vm-agent
+zabbix     1382   1334  0  2022 ?        05:03:46 /usr/sbin/zabbix_agentd: collector [idle 1 sec]
+root       1383   1374  0  2022 ?        06:58:26 vm-agent
+zabbix     1384   1334  0  2022 ?        02:11:02 /usr/sbin/zabbix_agentd: listener #1 [waiting for connection]
+zabbix     1385   1334  0  2022 ?        02:07:21 /usr/sbin/zabbix_agentd: listener #2 [waiting for connection]
+zabbix     1387   1334  0  2022 ?        02:08:17 /usr/sbin/zabbix_agentd: listener #3 [waiting for connection]
+zabbix     1389   1334  0  2022 ?        00:18:18 /usr/sbin/zabbix_agentd: active checks #1 [idle 1 sec]
+root       1587      1  0  2022 ?        00:03:08 /usr/libexec/postfix/master -w
+postfix    1589   1587  0  2022 ?        00:00:58 qmgr -l -t unix -u
+root       1748      2  0  2022 ?        00:00:08 [kworker/15:1H]
+root       1763      2  0  2022 ?        00:00:07 [kworker/2:1H]
+root       1883      2  0  2022 ?        00:00:09 [kworker/3:1H]
+root       1913      2  0  2022 ?        00:00:07 [kworker/14:1H]
+root       1934      2  0  2022 ?        00:00:07 [kworker/11:1H]
+root       2087      2  0  2022 ?        00:00:07 [kworker/12:1H]
+root       6020      2  0  2022 ?        00:00:07 [kworker/13:1H]
+root       8656      2  0 4月28 ?       00:00:13 [kworker/u508:2]
+root       8886      2  0 13:00 ?        00:00:00 [kworker/13:0]
+root       9090      2  0  2022 ?        00:00:08 [kworker/9:1H]
+root      15533      2  0 5月04 ?       00:00:01 [kworker/11:1]
+root      18494      2  0 14:50 ?        00:00:00 [kworker/4:0]
+root      19163      2  0 14:58 ?        00:00:00 [kworker/2:0]
+root      26623      2  0 16:20 ?        00:00:00 [kworker/6:0]
+root      31261      2  0 17:10 ?        00:00:00 [kworker/9:1]
+root      32056      2  0 5月04 ?       00:00:03 [kworker/15:0]
+root      32061      2  0 5月04 ?       00:00:01 [kworker/9:0]
+root      35727      2  0 18:00 ?        00:00:00 [kworker/3:1]
+root      37466      2  0 18:20 ?        00:00:00 [kworker/11:0]
+root      40154      2  0 18:50 ?        00:00:00 [kworker/12:2]
+root      44450      2  0 19:40 ?        00:00:00 [kworker/7:2]
+root      46166      2  0 20:00 ?        00:00:00 [kworker/5:2]
+postfix   50076   1587  0 20:44 ?        00:00:00 pickup -l -t unix -u
+root      52993 230682  0 21:18 ?        00:00:00 sshd: root@pts/0,pts/1
+root      53056  52993  0 21:18 pts/0    00:00:00 -bash
+root      55004      2  0 21:40 ?        00:00:00 [kworker/1:1]
+root      55651  52993  0 21:48 pts/1    00:00:00 -bash
+root      55939      2  0 21:51 ?        00:00:00 [kworker/1:2]
+root      56478      2  0 21:56 ?        00:00:00 [kworker/1:0]
+root      57048  55651  0 22:03 pts/1    00:00:00 ps -ef
+root      57672      1  1  2022 ?        4-13:13:00 /titan/agent/titanagent -d -b /etc/titanagent
+root      72061      2  0 5月04 ?       00:00:01 [kworker/14:0]
+root      78267      1  2  2022 ?        10-00:37:22 /data/solution/smartgate/bin/smartgate
+root      78279  78267  0  2022 ?        00:16:29 /data/solution/smartgate/bin/smartgate service
+root      78284  78267  0  2022 ?        05:20:40 /data/solution/smartgate/bin/smartgate service
+root      78289  78267  2  2022 ?        6-21:54:28 /data/solution/smartgate/bin/smartgate service
+root      78296  78267  2  2022 ?        6-20:53:47 /data/solution/smartgate/bin/smartgate service
+root      78303  78267  1  2022 ?        6-18:48:16 /data/solution/smartgate/bin/smartgate service
+root      78309  78267  1  2022 ?        6-14:08:20 /data/solution/smartgate/bin/smartgate service
+root      78315  78267  1  2022 ?        6-15:28:25 /data/solution/smartgate/bin/smartgate service
+root      78321  78267  1  2022 ?        6-18:54:28 /data/solution/smartgate/bin/smartgate service
+root      78327  78267  2  2022 ?        6-19:53:07 /data/solution/smartgate/bin/smartgate service
+root      78333  78267  2  2022 ?        6-19:55:24 /data/solution/smartgate/bin/smartgate service
+root      78339  78267  1  2022 ?        6-13:26:50 /data/solution/smartgate/bin/smartgate service
+root      78345  78267  1  2022 ?        6-17:57:01 /data/solution/smartgate/bin/smartgate service
+root      78347  78267  2  2022 ?        7-00:32:49 /data/solution/smartgate/bin/smartgate service
+root      78353  78267  1  2022 ?        6-12:36:56 /data/solution/smartgate/bin/smartgate service
+root      78357  78267  1  2022 ?        6-15:31:25 /data/solution/smartgate/bin/smartgate service
+root      78365  78267  1  2022 ?        6-16:20:51 /data/solution/smartgate/bin/smartgate service
+root      78375  78267  1  2022 ?        6-17:52:20 /data/solution/smartgate/bin/smartgate service
+root      80198      2  0 4月28 ?       00:00:08 [kworker/7:0]
+root      91960      2  0 5月05 ?       00:00:01 [kworker/6:1]
+root     111473      2  0 4月04 ?       00:01:02 [kworker/0:2]
+root     112146      2  0 5月05 ?       00:00:02 [kworker/10:2]
+root     122015      2  0  2022 ?        00:02:58 [kworker/u508:1]
+root     128807      2  0 5月05 ?       00:00:01 [kworker/3:0]
+root     136102      2  0 5月03 ?       00:00:20 [kworker/2:1]
+root     154807      2  0 5月05 ?       00:00:00 [kworker/8:0]
+root     167228      2  0 4月29 ?       00:00:08 [kworker/4:1]
+root     175176      2  0 5月01 ?       00:00:03 [kworker/12:0]
+root     178119      2  0 1月31 ?       00:11:26 [kworker/0:1]
+root     178598      2  0 5月03 ?       00:00:02 [kworker/8:2]
+root     182113      2  0 4月19 ?       00:00:00 [kworker/0:3]
+root     192111      2  0 5月05 ?       00:00:00 [kworker/14:1]
+root     199564      1  0  2022 ?        00:00:00 /usr/sbin/xinetd -stayalive -pidfile /var/run/xinetd.pid
+root     205985      2  0 01:00 ?        00:00:00 [kworker/5:1]
+root     209088      1  0  2022 ?        00:00:48 /usr/sbin/crond -n
+root     230682      1  0  2022 ?        00:00:00 sshd: /usr/sbin/sshd [listener] 0 of 10-100 startups
+root     236782      2  0 06:54 ?        00:00:00 [kworker/13:2]
+root     249479      2  0 09:20 ?        00:00:00 [kworker/10:1]
+root     251207      2  0 09:40 ?        00:00:00 [kworker/15:2]

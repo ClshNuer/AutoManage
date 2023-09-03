@@ -1,0 +1,42 @@
+{
+    "appName": "Thunder11",
+    "version": "11.1.12.1692",
+    "description": "迅雷X版于2018年6月推出，X版全面升级界面、框架、下载引擎、选项设置。",
+    "homepage": "https://www.423down.com/9092.html",
+    "license": "Unknown",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/SayCV/gh-cdn-cvp/releases/download/v1.0.0/xunlei-v11.1.12.1692-cvp.exe#dl.7z",
+            "refurls": "https://423down.lanzoui.com/b0f22rzif",
+            "hash": "b53435edd17093e9f1388281282a4e1d1ec43eb3fc555a238c19eb85d8708f59"
+        }
+    },
+    "depends": "sudo",
+    "extract_dir": "Thunder",
+    "installer": {
+        "script": "sudo cmd.exe /c \"$dir\\!)绿化.bat\""
+    },
+    "uninstaller": {
+        "script": "sudo cmd.exe /c \"$dir\\!)卸载.bat\""
+    },
+    "bin": [
+        [
+            "Program/Thunder.exe",
+            "thunder11"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "Program/Thunder.exe",
+            "迅雷X版"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/SayCV/gh-cdn-cvp/releases",
+        "regex": "xunlei-v([\\d.-]+)-cvp.exe"
+    },
+    "autoupdate": {
+        "url": "https://github.com/SayCV/gh-cdn-cvp/releases/download/v1.0.0/xunlei-v$version-cvp.exe#dl.7z"
+    },
+    "notes": "安装非最新版本，仅供测试使用。"
+}
