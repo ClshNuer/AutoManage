@@ -58,6 +58,7 @@
   - CMD
 
     - sudo
+    - pandoc
     - nmap
     - Redis
     - Xray
