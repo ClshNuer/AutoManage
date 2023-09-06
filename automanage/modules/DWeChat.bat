@@ -1,4 +1,4 @@
-WECHAT_PATH=D:\Softwares\scoop\apps\wechat\current\WeChat.exe
+WECHAT_PATH=D:\Softwares\scoop\apps\wechat\current\
 
-start %WECHAT_PATH%
-start %WECHAT_PATH%
+start D:\Softwares\scoop\apps\wechat\current\WeChat.exe
+start D:\Softwares\scoop\apps\wechat\current\WeChat.exe

@@ -39,7 +39,6 @@
     - TIM [G:\AllInOne\Codes\AutoManage\automanage\config\tim.json]
     - Telegram
     - WeMeet
-    - Thunder11 [迅雷X 版 G:\AllInOne\Codes\AutoManage\automanage\config\thunder11.json]
     - aDrive
     - BaiduNetdisk
     - ClashMini
