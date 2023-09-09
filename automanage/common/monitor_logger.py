@@ -195,6 +195,7 @@ from SmoothCriminal import mean_mouse_speed
 class SandBox(object):
     """
     SandBox
+    沙盒探测，应用到 SmoothCriminal
     
     Usage:
         python monitor_logger.py sandbox
