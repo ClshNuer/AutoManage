@@ -90,18 +90,18 @@ class ScapyScan(object):
     def tcp(self, dst, lport = 0, hport = 65535):
         _, ping_result = self.ping(dst)
         if ping_result:
+            dports = []
             pkg = IP(dst = dst) / TCP(dport = (lport, hport), flags = "S")
             try:
-                reply = sr(pkg, timeout = 1, verbose = 1)
-                result_list = reply[0].res
-                for i in range(len(result_list)):
-                    if result_list[i][1].haslayer(TCP):
-                        TCP_Fields = result_list[i][1].getlayer(TCP).fields
-                        if TCP_Fields['flags'] == 18:
-                            logger.info(f"端口号 {TCP_Fields['sport'] is open}")
-
+                replies = sr(pkg, timeout = 1, verbose = 0)[0].res
+                for reply in replies:
+                    if reply[1].haslayer(TCP) and reply[1][TCP].fields['flags'] == 18:
+                        dports.append(reply[1][TCP].sport)
+                        logger.info(f"端口号 {reply[1][TCP].sport} is open")
+                return dports, True
             except Exception:
                 logger.error(f"TCP failed! {dst}:{lport}:{hport}")
+                return dports, False
 
     def tcp_scan(self):
         pass
