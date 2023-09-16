@@ -15,13 +15,13 @@
     - (fastgithub https://github.com/dotnetcore/FastGithub.git)
   - UI
 
-    - Coodesker [G:\AllInOne\Codes\AutoManage\automanage\config\coodesker.json]
+    - Coodesker / Maye
     - TrafficMonitor
     - // GoogleChrome (可安装)
     - GoogleChromeDev
     - Firefox
     - GeekUninstaller (Geek)
-    - DismPlusplus [https://github.com/Chuyu-Team/Dism-Multi-language.git]
+    - DismPlusplus
     - Everything
     - WinRAR
     - Notion [中文包 https://github.com/Reamd7/notion-zh_CN]
@@ -30,13 +30,13 @@
     - SublimeText4
     - Xmind
     - WPSOffice
-    - FoxitReader (PDF FoxitPhantomPDF 可能需要破解)
+    - FoxitReader (PDF FoxitPhantomPDF 需要破解)
     - PDFXEditor
     - PotPlayer
     - NeteaseMusic
     - WeChat (双开)
     - DingTalk
-    - TIM [G:\AllInOne\Codes\AutoManage\automanage\config\tim.json]
+    - TIM
     - Telegram
     - WeMeet
     - aDrive
@@ -80,11 +80,11 @@
     - liberica8-jdk (jdk8)
     - microsoft-jdk (jdk 17)
     - openjdk11
-    - oraclejdk [20 D:\Softwares\scoop\buckets\java\bucket\oraclejdk.json]
+    - oraclejdk
     - python (python37 python310)
     - maven
-    - nodejs-lts (18.17.0)
-    - npcap [G:\AllInOne\Codes\AutoManage\automanage\config\npcap.json]
+    - nodejs-lts
+    - npcap
   - Other
 
     - scoop-completion
