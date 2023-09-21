@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding-utf-8 -*-
 
+# 待优化
+
 import sys
 import socket
 import paramiko
@@ -111,6 +113,25 @@ class ReverseSSHServer(object):
             except:
                 pass
             sys.exit(1)
+
+class ReverseSSH(object):
+    """
+    反向SSH 时，Client 为目标服务端，Server 为外网服务端
+    """
+    def __init__(self, ip = '127.0.0.1', port = 22, passwd = 'root', command = 'whoami'):
+        self.ip = ip
+        self.port = port
+        self.passwd = passwd
+        self.command = command
+        self.thread = threading.Thread(target = self.reverse_ssh)
+        self.thread.start()
+    
+    def reverse_ssh(self):
+        ssh_cliet = ReverseSSHClient
+        ssh_server = ReverseSSHServer
+
+if __name__ == '__main__':
+    fire.Fire(ReverseSSH)
 
 '''
 # reverse ssh client

@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding-utf-8 -*-
 
+# 待优化
+
 import socket
 import threading
 import subprocess
