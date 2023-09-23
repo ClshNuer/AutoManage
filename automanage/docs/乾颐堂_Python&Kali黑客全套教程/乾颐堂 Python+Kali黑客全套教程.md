@@ -98,6 +98,20 @@
   # 攻击技巧
   	1- hook
   	2- keylogger
+  /*
+  1. 诱导受害者访问钓鱼网站
+  2. 钓鱼网站触发访问目标(可信本地存在cookie)站点
+  3. 触发本地PC 下载hook.js 文件
+  4. 本地PC 运行hook.js 文件，获取cookie
+  5. 发给hacker 站点，收集cookie
+  6. hacker 站点以邮件形式发出
+  
+  http://target.vulhost.com/xss.php # 目标站点
+  http://gofish.hack.net/index.jsp # 社工伪造钓鱼网站
+  http://hook.hack.net/xss_hook.js # hook 站点
+  http://collect.hack.net/xss_hook2email.php # 通过hook 站点收集信息的站点
+  */
+  
   ```
-
+  
   
