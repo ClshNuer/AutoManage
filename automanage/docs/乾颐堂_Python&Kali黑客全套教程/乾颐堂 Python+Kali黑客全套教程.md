@@ -72,7 +72,7 @@
 
 
 
-- 工具
+- web 工具
 
   ```tex
   BurpSuite
@@ -196,7 +196,13 @@
   select * from users where id = '' and tables_name.column_name is null --+ # 如tables_name.column_name 为users.username
   
   # ' and (select count(*) from tables_name) > 0 --+ # 猜表名，可暴露当前使用的数据库名
-  
   ```
   
+- CSRF 攻击
+
+  ```tex
+  # 关键性操作，二次验证；付款、改密等
+  # BP 抓包右击》Engagement tools》Generate CSRF PoC (生成的HTML 视)
+  ```
+
   

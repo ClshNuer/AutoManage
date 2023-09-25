@@ -21,6 +21,7 @@
     - GoogleChromeDev
     - Firefox
     - GeekUninstaller (Geek)
+    - Bcut (必剪)
     - DismPlusplus
     - Everything
     - WinRAR
