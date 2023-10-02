@@ -28,6 +28,7 @@
     - Notion [中文包 https://github.com/Reamd7/notion-zh_CN]
     - Typora (1.6.7 已破解)
     - Gridea
+    - SQLiteBrowser
     - SublimeText4
     - Xmind
     - WPSOffice

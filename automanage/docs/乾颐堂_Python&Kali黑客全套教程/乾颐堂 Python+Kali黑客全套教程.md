@@ -356,8 +356,13 @@
   # 查看已连接客户端，即Stations
   # 客户端登录/访问HTTP 网站等
   # WiFi-Pumpkin 捕获：Images-Cap/Activity-Monitor(HTTP-Requests/HTTP-Authentication)
-  
-  
   ```
   
+- python 中文解码
+
+  ```tex
+  # urllib3 request 后response.data 中出现乱码
+  # 中文解码 GB18030 确认乱码是奇数，偶数为UTF-8
+  ```
+
   

@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding-utf-8 -*-
 
+# 网站代码改进，爬取方式已不可用
+
+import os
 import re
 import json
+import sqlite3
 from urllib3 import *
 from bs4 import BeautifulSoup
 
 # # Spider_Def.py
-
 """
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
 Accept-Encoding: gzip, deflate, br
@@ -28,87 +31,126 @@ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
 
 # 将请求报文的字符串转为HTTP Headers
 def get_headers(file):
-    headerDict = {}
+    headers = {}
     with open(file, 'r') as f:
-        headersText = f.read()
-        headers = re.split('\n', headersText)
-        for header in headers:
-            result = re.split(':', header, maxsplit = 1)
-            headerDict[result[0]] = result[1].strip()
-    return headerDict
+        headers_text = f.read()
+        headers_list = re.split('\n', headers_text)
+        for header in headers_list:
+            header_type, header_value = re.split(':', header, maxsplit = 1)
+            headers[header_type] = header_value.strip()
+    return headers
 
-print(get_headers('../data/head_tm.txt'))
-
-class SpiderDB(object):
+class SpiderDB:
     """
     将爬取的数据写入数据库
+        id 唯一ID；itemid 产品ID；color 产品颜色；size 内存大小；source 数据源；discuss 客户评论；time 时间
     """
-    pass
+    def __init__(self, dbname):
+        self.dbname = dbname
+        self.conn = self.connect_db()
+        self.cursor = self.create_table()
+
+    def create_table(self):
+        cursor = self.conn.cursor()
+        sql_cmd = """create table phone_sales
+                            (id integer primary key autoincrement not null,
+                            itemid text not null,
+                            color text,
+                            size text,
+                            source text not null,
+                            discuss mediumtext not null,
+                            time text not null);"""
+        cursor.execute(sql_cmd)
+        return cursor
+
+    def connect_db(self):
+        if os.path.exists(self.dbname):
+            os.remove(self.dbname)
+        conn = sqlite3.connect(self.dbname)
+        return conn
+
+    def insert(self, itemid, color, size, source, discuss, time):
+        sql_cmd = """insert into phone_sales(itemid, color, size, source, discuss, time)
+                        values('%s', '%s', '%s', '%s', '%s', '%s')""" % (itemid, color, size, source, discuss, time)
+        self.cursor.execute(sql_cmd)
+
+    def commit(self):
+        self.conn.commit()
+
+    def close_db(self):
+        self.cursor.close()
+        self.conn.close()
 
 # # TMALL_Def.py
-# 获取某商品某一页的详情
-def getJSONDetail(url, itemId, currentPage):
-    re_result = re.match('.+itemId=(.+)&spuId.+&currentPage=(.+)&append.+callback=(.+)$', url).groups()
-    url_itemID = re_result[0]
-    url_currentPage = re_result[1]
-    url_callback = re_result[2]
+file = "../data/head_tm.txt"
+headers = get_headers(file) # 读取头部信息，主要读取Cookie 值
+disable_warnings() # 忽略告警是不安全的选择，即证书报错会被忽略
+manager = PoolManager() # 控制并发 http://www.cnblogs.com/shadowwalker/p/5283372.html
 
-    url = url.replace(url_itemID, str(itemId))
-    url1 = url.split('&currentPage=')
-    url2 = url.split('&append')
-    url = url1[0] + '&currentPage=' + str(currentPage) + '&append' + url2[1]
-    
-    r = http.requent('GET', url, headers = headers)
-    c = r.data.decode('GB18030')
-    c = c.replace(url_callback + '(', '')
-    c = c.replace(')', '')
-    c = c.replace('false', '"false"')
-    c = c.replace('true', '"true"')
-    tmalljson = json.loads(c)
-
-    return tmalljson
-
-# 获取某商品详情的最后一页
-def getLastPage(url, itemId):
-    tmalljson = getJSONDetail(url, itemId, 1)
-    return tmalljson['rateDetail']['paginator']['lastPage']
-
-def getProductIdList():
-    headers = get_headers('head_tm.txt') # 读取头部信息，主要读取Cookie 值
-    disable_warnings() # 忽略告警是不安全的选择，即证书报错会被忽略
-    http = PoolManager() # 用于控制并发 http://www.cnblogs.com/shadowwalker/p/5283372.html
-
-    url = "https://list.tmall.com/search_product.html?spm=a220m.1000858l1000724.4.2f"
-    r = http.request('GET', url, headers = headers)
-    c = r.data.decode('GB18030')
-
-    soup = BeautifulSoup(c, 'lxml')
-    data_id_list = []
-    div_product = soup.find_all('div', class_ = 'product')
-    for data_id in div_product:
-        data_id_list.append(data_id.attrs['data-id'])
-
-    return_id_list = []
-    for item in data_id_list:
-        url = "https://detail.tmall.com/item.htm?id=" + item
-        r = http.request('GET', url, headers = headers)
-        r = r.data.decode('GB18030')
-        soup = BeautifulSoup(r, 'lxml')
-        item_name = soup.find('div', class_ = 'tb-detail-hd').text
-        if re.match('.*[Mm][Aa][Tt][Ee]\s*10.'.item_name.strip()):
-            return_id_list.append(item)
-
-    return return_id_list
-
+# response.data 出现乱码 中文解码 GB18030 确认乱码是奇数，偶数为UTF-8
+def decoded_response_data(response):
+    try:
+        decoded_data = response.data.decode('gb18030')
+    except UnicodeDecodeError:
+        decoded_data = response.data.decode('utf-8')
+    return decoded_data
 
 # 获取所有相关商品ID
-def getProductId():
-    pass
+# xpath //*[@id="root"]/div/div[3]/div[1]/div[1]/div[2]/div[3]/div/div[1]/a
+def get_product_id_list(url):
+    response = manager.request('GET', url, headers = headers)
+    decoded_data = decoded_response_data(response)
+    xpath = '//*[@id="root"]/div/div[3]/div[1]/div[1]/div[2]/div[3]/div/div[1]/a'
+
+    soup = BeautifulSoup(decoded_data, 'lxml')
+    product_list = soup.find_all('div', class_ = 'product ')
+    product_id_list = [data_id.attrs['data-id'] for data_id in product_list]
+
+    filter_product_id_list = []
+    for product_id in product_id_list:
+        url = "https://detail.tmall.com/item.htm?id=" + product_id
+        response = manager.request('GET', url, headers = headers)
+        decoded_data = decoded_response_data(response)
+        soup = BeautifulSoup(decoded_data, 'lxml')
+        product_name = soup.find('div', class_ = 'tb-detail-hd').text
+        if re.match('.*[Mm][Aa][Tt][Ee]\s*10.', product_name.strip()):
+            filter_product_id_list.append(product_id)
+
+    return filter_product_id_list
+
+# 获取某商品某一页的详情
+def get_json_detail(url, id, current_page):
+    # match = re.match('.+id=(.+)&spuId.+&ns=(.+)&append.+abbucket=(.+)&', url)
+    # default_id, page_num, callback = match.groups()
+    match = re.match('.+abbucket=(.+)&id=(.+)&ns=(.+)&', url)
+    if match:
+        callback, default_id, page_num = match.groups()
+    else:
+        return 
+    url = url.replace(default_id, str(id))
+    # new_url = url.split('&currentPage=')[0] + '&currentPage=' + str(current_page) + '&append' + url.split('&append')[1]
+    new_url = url.split('&abbucket=')[0] + '&abbucket=' + str(callback) + '&id=' + url.split('&id')[1]
+    response = manager.request('GET', new_url, headers = headers)
+    decoded_data = decoded_response_data(response)
+    decoded_data = decoded_data.replace(callback + '(', '').replace(')', '').replace('false', '"false"').replace('true', '"true"')
+
+    # tmall_json = json.loads(decoded_data)
+    # return tmall_json
+
+# 获取某商品详情的最后一页
+def get_last_page(url, itemId):
+    # tmall_json = get_json_detail(url, itemId, 1)
+    return get_json_detail(url, itemId, 1)['rateDetail']['paginator']['lastPage']
 
 
-def main():
-    print(get_headers('head_tm.txt'))
-    pass
 
 
 # # TMALL_MATE10_Final.py 运行爬虫模块
+file = "../data/phone_tmall.sqlite"
+spiderdb = SpiderDB(file)
+
+url = "https://s.taobao.com/search?fromTmallRedirect=true&q=mate%2060&spm=875.7931836%2FB.a2227oh.d100&tab=mall"
+product_id_list = get_product_id_list(url)
+
+url = "https://detail.tmall.com/item.htm?abbucket=15&id=735607375083&ns=1&spm=a21n57.1.0.0.56da523czTDZ4t&sku_properties=5919063:6536025"
+tmall_json = get_json_detail(url, product_id_list[len(product_id_list) - 1], 1)
