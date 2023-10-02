@@ -138,9 +138,9 @@ def get_json_detail(url, id, current_page):
     # return tmall_json
 
 # 获取某商品详情的最后一页
-def get_last_page(url, itemId):
+def get_last_page(url, id):
     # tmall_json = get_json_detail(url, itemId, 1)
-    return get_json_detail(url, itemId, 1)['rateDetail']['paginator']['lastPage']
+    return get_json_detail(url, id, 1)['rateDetail']['paginator']['lastPage']
 
 
 
@@ -153,4 +153,23 @@ url = "https://s.taobao.com/search?fromTmallRedirect=true&q=mate%2060&spm=875.79
 product_id_list = get_product_id_list(url)
 
 url = "https://detail.tmall.com/item.htm?abbucket=15&id=735607375083&ns=1&spm=a21n57.1.0.0.56da523czTDZ4t&sku_properties=5919063:6536025"
-tmall_json = get_json_detail(url, product_id_list[len(product_id_list) - 1], 1)
+
+for id in product_id_list:
+    try:
+        page_max_num = get_last_page(url, id)
+        for num in page_max_num:
+            tmall_json = get_json_detail(url, id, num)
+            rate_list = tmall_json['rateDetail']['rateList']
+
+            for rate in rate_list:
+                rateContent = rate_list[rate]['rateContent']
+                colorSize = rate_list[rate]['auctionSku']
+                color, msize = re.split('[:;]', colorSize)[3], re.split('[:;]', colorSize)[7]
+                msize = msize + 'GB'
+                dtime = rate_list[rate]['rateDate']
+                spiderdb.insert(id, color, msize, '天猫', rateContent, dtime)
+                spiderdb.commit()
+    except Exception as e:
+        continue
+
+spiderdb.close()
