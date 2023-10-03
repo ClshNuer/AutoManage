@@ -283,20 +283,28 @@ def jd_scapy():
 
 # jd_scapy() # 爬取数据
 
-def show(file):
+# 饼状图显示百分比
+def show_by_plt(file, string, string_zh):
     engine_JD = sqlalchemy.create_engine(f'sqlite:///{file}')
     with engine_JD.connect() as conn:
         jd_mate60_sales = pd.read_sql('select color, size, source from phone_sales', conn)
         # tmall_mate60_sales = pd.read_sql('select color, size, source from phone_sales', conn)
     # mate60_sales = concat([jd_mate60_sales, tmall_mate60_sales])
-    colorCount = jd_mate60_sales.groupby('color')['color'].count() # 统计颜色
-    allCount = colorCount.sum()
-    color_sale = colorCount.to_frame(name = '颜色销量')
+    string_Count = jd_mate60_sales.groupby(string)[string].count() # 统计颜色
+    allCount = string_Count.sum()
+    string_sale = string_Count.to_frame(name = string_zh)
 
     pd.options.display.float_format = '{:.2f}%'.format
-    color_sale.insert(0, '比例', 100*colorCount/allCount)
-    print(color_sale)
+    string_sale.insert(0, '比例', 100*string_Count/allCount)
+    
+    rcParams['font.sans-serif'] = ['SimHei']
+    string_sale[string_zh].plot(kind = 'pie', autopct = '%.2f%%')
+    axis('equal')
+    legend()
+    show()
 
 
 file = '../data/phone_jd_clean.sqlite'
-show(file)
+show_by_plt(file, string = 'color', string_zh = '颜色销量')
+show_by_plt(file, string = 'size', string_zh = '内存大小销量')
+show_by_plt(file, string = 'source', string_zh = '数据来源销量')
