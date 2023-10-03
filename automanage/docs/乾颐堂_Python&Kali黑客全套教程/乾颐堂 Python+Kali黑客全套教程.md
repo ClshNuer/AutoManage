@@ -368,6 +368,7 @@
 - 数据清洗
 
   ```sql
+  DELETE FROM phone_sales WHERE color = '';
   UPDATE phone_sales SET size = '12GB+512GB' WHERE size = '12G+512GB';
   SELECT size as 内存大小,count(*) as 数量 FROM phone_sales GROUP by size;
   ```

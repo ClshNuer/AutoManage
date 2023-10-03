@@ -9,8 +9,7 @@ import re
 import json
 import sqlite3
 import sqlalchemy
-# import pandas as pd
-from pandas import *
+import pandas as pd
 from urllib3 import *
 from bs4 import BeautifulSoup
 from matplotlib.pyplot import *
@@ -284,9 +283,20 @@ def jd_scapy():
 
 # jd_scapy() # 爬取数据
 
+def show(file):
+    engine_JD = sqlalchemy.create_engine(f'sqlite:///{file}')
+    with engine_JD.connect() as conn:
+        jd_mate60_sales = pd.read_sql('select color, size, source from phone_sales', conn)
+        # tmall_mate60_sales = pd.read_sql('select color, size, source from phone_sales', conn)
+    # mate60_sales = concat([jd_mate60_sales, tmall_mate60_sales])
+    colorCount = jd_mate60_sales.groupby('color')['color'].count() # 统计颜色
+    allCount = colorCount.sum()
+    color_sale = colorCount.to_frame(name = '颜色销量')
+
+    pd.options.display.float_format = '{:.2f}%'.format
+    color_sale.insert(0, '比例', 100*colorCount/allCount)
+    print(color_sale)
+
+
 file = '../data/phone_jd_clean.sqlite'
-engine_JD = sqlalchemy.create_engine(f'sqlite:///{file}')
-jd_mate60_sales = read_sql('select color, size, source from phone_sales', engine_JD)
-# with engine_JD.connect() as conn:
-#     jd_mate60_sales = pd.read_sql('select color, size, source from phone_sales', conn)
-print(jd_mate60_sales)
+show(file)
