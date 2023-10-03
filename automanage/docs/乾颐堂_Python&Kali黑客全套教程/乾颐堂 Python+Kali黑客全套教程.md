@@ -365,4 +365,11 @@
   # 中文解码 GB18030 确认乱码是奇数，偶数为UTF-8
   ```
 
+- 数据清洗
+
+  ```sql
+  UPDATE phone_sales SET size = '12GB+512GB' WHERE size = '12G+512GB';
+  SELECT size as 内存大小,count(*) as 数量 FROM phone_sales GROUP by size;
+  ```
+
   

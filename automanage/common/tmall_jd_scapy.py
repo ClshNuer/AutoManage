@@ -8,8 +8,13 @@ import os
 import re
 import json
 import sqlite3
+import sqlalchemy
+# import pandas as pd
+from pandas import *
 from urllib3 import *
 from bs4 import BeautifulSoup
+from matplotlib.pyplot import *
+
 
 disable_warnings() # 忽略告警是不安全的选择，即证书报错会被忽略
 manager = PoolManager() # 控制并发 http://www.cnblogs.com/shadowwalker/p/5283372.html
@@ -32,7 +37,6 @@ def decoded_response_data(response):
     except UnicodeDecodeError:
         decoded_data = response.data.decode('utf-8')
     return decoded_data
-
 
 
 # # Spider_Def.py
@@ -138,8 +142,8 @@ def get_tm_json_detail(url, id, current_page):
     decoded_data = decoded_response_data(response)
     decoded_data = decoded_data.replace(callback + '(', '').replace(')', '').replace('false', '"false"').replace('true', '"true"')
 
-    # tmall_json = json.loads(decoded_data)
-    # return tmall_json
+    tmall_json = json.loads(decoded_data)
+    return tmall_json
 
 # 获取某商品详情的最后一页
 def get_tm_last_page(url, id):
@@ -154,7 +158,7 @@ def tmall_scapy():
     url = "https://s.taobao.com/search?fromTmallRedirect=true&q=mate%2060&spm=875.7931836%2FB.a2227oh.d100&tab=mall"
     product_id_list = get_tm_product_id_list(url)
 
-    url = "https://h5api.m.tmall.com/h5/mtop.alibaba.review.list.for.new.pc.detail/1.0/?jsv=2.7.0&appKey=12574478&t=1696307461355&sign=fc53149fa8f15a9dd3b280b8275f38d1&api=mtop.alibaba.review.list.for.new.pc.detail&v=1.0&isSec=0&ecode=0&timeout=10000&ttid=2022%40taobao_litepc_9.17.0&AntiFlood=true&AntiCreep=true&preventFallback=true&type=jsonp&dataType=jsonp&callback=mtopjsonp4&data=%7B%22itemId%22%3A%22735607375083%22%2C%22bizCode%22%3A%22ali.china.tmall%22%2C%22channel%22%3A%22pc_detail%22%2C%22pageSize%22%3A20%2C%22pageNum%22%3A2%7D"
+    url = "https://h5api.m.tmall.com/h5/mtop.alibaba.review.list.for.new.pc.detail/1.0/?jsv=2.7.0&appKey=12574478&t=1696337908679&sign=67069d403a8362d2636ac4401141e6b0&api=mtop.alibaba.review.list.for.new.pc.detail&v=1.0&isSec=0&ecode=0&timeout=10000&ttid=2022%40taobao_litepc_9.17.0&AntiFlood=true&AntiCreep=true&preventFallback=true&type=jsonp&dataType=jsonp&callback=mtopjsonp2&data=%7B%22itemId%22%3A%22732270558093%22%2C%22bizCode%22%3A%22ali.china.tmall%22%2C%22channel%22%3A%22pc_detail%22%2C%22pageSize%22%3A20%2C%22pageNum%22%3A1%7D"
 
     for id in product_id_list:
         try:
@@ -255,6 +259,7 @@ def jd_scapy():
 
     url = "https://api.m.jd.com/?appid=item-v3&functionId=pc_club_productPageComments&client=pc&clientVersion=1.0.0&t=1696305958461&loginType=3&uuid=122270672.1693238677101275458670.1693238677.1696301008.1696303375.4&productId=100065092578&score=0&sortType=5&page=0&pageSize=10&isShadowSku=0&fold=1&bbtf=&shield="
     
+    pattern = r'(.+)([TBG])(?=[^TBG]*$)' # 非中文
     for id in product_id_list:
         try:
             page_max_num = get_jd_last_page(url, id)
@@ -265,7 +270,9 @@ def jd_scapy():
                     discuss = comment['content']
                     productColor = comment['productColor']
                     createTime = comment['creationTime']
-                    productSite = comment['productSize']
+                    match = re.search(pattern, comment['productSize'])
+                    if match:
+                        productSite = match.group() # pattern = r'(\d+)(?:G)?(?:B)?\+(\d+)(?:T)?(?:G)?(?:B)?' # 内存数字+存储数字
                     print(productColor, productSite, discuss, createTime)
                     spiderdb.insert(str(id), productColor, productSite, '京东', discuss, createTime)
                     spiderdb.commit()
@@ -275,4 +282,11 @@ def jd_scapy():
 
     spiderdb.close_db()
 
-jd_scapy()
+# jd_scapy() # 爬取数据
+
+file = '../data/phone_jd_clean.sqlite'
+engine_JD = sqlalchemy.create_engine(f'sqlite:///{file}')
+jd_mate60_sales = read_sql('select color, size, source from phone_sales', engine_JD)
+# with engine_JD.connect() as conn:
+#     jd_mate60_sales = pd.read_sql('select color, size, source from phone_sales', conn)
+print(jd_mate60_sales)
