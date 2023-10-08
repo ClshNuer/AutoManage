@@ -373,4 +373,4 @@
   SELECT size as 内存大小,count(*) as 数量 FROM phone_sales GROUP by size;
   ```
 
-  
+- 
