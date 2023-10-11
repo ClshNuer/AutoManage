@@ -17,9 +17,6 @@ def pdf_metadata(file_name):
 def image_gps(file_name):
     gps = {}
     date = ''
-    with open(file_name, 'rb') as f:
-        tags = exifread.process_file(f)
-
     tag_map = {
         'GPS GPSLatitudeRef': 'GPSLatitudeRef',
         'GPS GPSLongitudeRef': 'GPSLongitudeRef',
@@ -29,6 +26,8 @@ def image_gps(file_name):
         'GPS GPSAltitude': 'GPSAltitude'
     }
     pattern = r'\[(\w*), (\w*), (\w.*)/(\w.*)\]'
+
+
 
     for tag, value in tags:
         if re.match('GPS GPSLatitudeRef', tag):
@@ -60,7 +59,6 @@ if __name__ == '__main__':
     pdf_path = '../data/pdf_test.pdf'
     pdf_metadata(pdf_path)
 
-
 def image_gps(file_name):
     gps = {}
     date = ''
@@ -86,3 +84,8 @@ def image_gps(file_name):
         elif tag.endswith('Date'):
             date = repr(value)
     return {"GPS 信息": gps, "时间信息": date}
+
+
+
+
+
