@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding-utf-8 -*-
 
+import os
+import re
+from urllib.parse import urlsplit
 from io import FileIO as file
 
 import exifread
+from urllib3 import *
 from PyPDF2 import PdfReader
+from bs4 import BeautifulSoup
 
 def pdf_metadata(file_name):
     pdf_file = PdfReader(file(file_name, 'rb'))
@@ -13,7 +18,7 @@ def pdf_metadata(file_name):
     for key, value in doc_info.items():
         print(f"[+] {key}: {value}")
 
-def image_gps(file_name):
+def get_image_gps(file_name):
     gps = {}
     date = ''
     tags = exifread.process_file(open(file_name, 'rb').read())
@@ -44,9 +49,49 @@ def image_gps(file_name):
             date = repr(value)
     return {"GPS 信息": gps, "时间信息": date}
 
+def find_images(url, manager):
+    print('发现URL 上的图片文件：' + url)
+    response = manager.request('GET', url).data
+    soup = BeautifulSoup(response, 'lxml')
+    images_tags = soup.find_all('img')
+    prefix = 'http://' + '/'.join(url.split('/')[2:-1]) + '/'
+    # prefix = url.replace(os.path.basename(urlsplit(url)[2]), '')
+    images_url = [prefix + images_tag['src'] for images_tag in images_tags]
+    return images_url
+
+def download_images(images_url, images_file_path, manager):
+    images_file_name = []
+    print("开始下载文件...")
+    for image_url in images_url:
+        try:
+            image_content = manager.request('GET', image_url).data 
+            image_file_name = os.path.basename(urlsplit(image_url)[2])
+            image_file_path = os.path.join(images_file_path, image_file_name)
+            with open(image_file_name, 'wb') as image_file:
+                image_file.write(image_content)
+            image_file_name = str(images_file_path) + str(image_file_name)
+            images_file_name.append(image_file_path)
+        except Exception as e:
+            print(e)
+    
+    print(f'下载完成, 共下载 {len(images_file_name)} 张图片')
+    return images_file_name
+
+def download_find_gps(url, images_file_path):
+    images_url = find_images(url)
+    images_file_name = download_images(images_url, images_file_path)
+
+    for image_file_name in images_file_name:
+        print(os.path.basename(image_file_name) + ': ' + get_image_gps(image_file_name))
+
 if __name__ == '__main__':
+    manager = PoolManager()
+
     pdf_path = '../data/pdf_test.pdf'
+    image_path = '../data/image_test.jpg'
     pdf_metadata(pdf_path)
+    get_image_gps(image_path)
 
-
+    url = 'http://www.image.com/gps/gps.html'
+    find_images(url, manager)
 
