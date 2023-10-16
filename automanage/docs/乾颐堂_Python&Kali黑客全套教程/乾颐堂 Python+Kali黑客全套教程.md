@@ -365,7 +365,7 @@
   # 中文解码 GB18030 确认乱码是奇数，偶数为UTF-8
   ```
 
-- 数据清洗
+- 爬虫 & 数据清洗
 
   ```sql
   DELETE FROM phone_sales WHERE color = '';
