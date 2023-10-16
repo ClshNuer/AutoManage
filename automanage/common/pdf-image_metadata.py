@@ -146,7 +146,30 @@ def get_pac_local_wifi_info():
     except Exception as e:
         print(e)
 
+def sid2user(sid):
+    try:
+        location_key = 'SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\ProfileList\\' + sid
+        with OpenKey(HKEY_LOCAL_MACHINE, location_key) as key:
+            (value, type) = QueryValueEx(key, 'ProfileImagePath')
+            user = value.split('\\')[-1]
+            return user
+    except:
+        return sid
 
+def get_recycle_file():
+    dirs = ["C:\\Recycler\\", "C:\\Recycled\\", "C:\\$Recycle.Bin\\"]
+    for recycle_dir in dirs:
+        if os.path.isdir(recycle_dir):
+            return recycle_dir
+
+def find_recycled(recycle_dir):
+    dir_list = os.listdir(recycle_dir)
+    for sid in dir_list:
+        files = os.listdir(recycle_dir + sid)
+        user = sid2user(sid)
+        print(f"用户 {user} 文件:")
+        for file in files:
+            print(f"发现文件: {file}")
 
 if __name__ == '__main__':
     manager = PoolManager()
