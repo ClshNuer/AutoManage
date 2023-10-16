@@ -2,12 +2,15 @@
 # -*- coding-utf-8 -*-
 
 import os
-import re
-from urllib.parse import urlsplit
+import json
+from winreg import *
+from urllib.parse import urlsplit, quote
 from io import FileIO as file
 
+import pygeoip
 import exifread
 from urllib3 import *
+from phone import Phone
 from PyPDF2 import PdfReader
 from bs4 import BeautifulSoup
 
@@ -83,6 +86,67 @@ def download_find_gps(url, images_file_path):
 
     for image_file_name in images_file_name:
         print(os.path.basename(image_file_name) + ': ' + get_image_gps(image_file_name))
+
+ip_city_db_file_path = 'd:\\GeoLiteCity.dat'
+gi = pygeoip.GeoIP(ip_city_db_file_path)
+
+def geocoding_by_ip(tgt):
+    rec = gi.record_by_name(tgt)
+    city = rec['city']
+    country = rec['country_name']
+    long = rec['longitude']
+    lat = rec['latitude']
+    print(f'IP 地址: {tgt}, 城市: {city}, 国家: {country}, 经纬度: ({long}, {lat})')
+
+# https://wigle.net/account
+# https://api.wigle.net/
+# request url 
+disable_warnings()
+def geocoding_by_wifi(bssid_mac, manager):
+    headers = {
+        'Authorization': 'Basic $token'
+    }
+    url = "https://api.wigle.net/api/v2/network/search?onlymine=false&freenet=false&paynet=false&netid=" + quote(bssid_mac)
+    reponse = manager.request('GET', url, headers = headers).data.decode()
+    json_data = json.loads(reponse)['results']
+    ssid = json_data['ssid']
+    country = json_data['country']
+    long = json_data['trilong']
+    lat = json_data['trilat']
+
+    print(f'SSID : {ssid}, 国家: {country}, 经纬度: ({long}, {lat})')
+
+def geocoding_by_phone(phone):
+    p1 = Phone()
+    return p1.find(phone)
+
+def val2addr(val):
+    addrlst = [str(hex(ch))[-2:] for ch in val]
+    mac_addr = ':'.join(addrlst)
+    return mac_addr
+
+def get_pac_local_wifi_info():
+    net = r"SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Signatures\Unmanaged"
+    try:
+        with OpenKey(HKEY_LOCAL_MACHINE, net) as key:
+            hostname = os.getenv('computername')
+            print(f"{hostname} local wifi info")
+            for guid in EnumKey(key):
+                with OpenKey(key, str(guid)) as net_key:
+                    (n, addr, t) = EnumValue(net_key, 5)
+                    print(f"{n} {addr} {t}")
+                    (n, name, t) = EnumValue(net_key, 4)
+                    print(f"{n} {name} {t}")
+                    mac_addr = val2addr(addr)
+                    ssid = str(name).strip()
+                    if ssid == '网络':
+                        next
+                    else:
+                        print(f"ssid {ssid}, mac addr {mac_addr}")
+    except Exception as e:
+        print(e)
+
+
 
 if __name__ == '__main__':
     manager = PoolManager()
